@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CO Parts - Car Body Parts Company</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        header {
+            background-color: #ffffff;
+            color: #080808;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            margin-left: 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu {
+            list-style-type: none;
+            display: flex;
+        }
+
+        .menu li {
+            margin-right: 20px;
+        }
+
+        .menu a {
+            color: #111010;
+            text-decoration: none;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        main {
+            padding-top: 60px; /* Adjust based on header height */
+            background: url(./images/bg.jpg);
+        }
+
+        .section {
+            padding: 50px;
+            text-align: center;
+            background-color: #fff;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+        }
+
+        /* Media Query for Responsive Design */
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px; /* Adjust based on header height */
+                left: 0;
+                width: 100%;
+                background-color: #333;
+                padding: 10px 0;
+            }
+
+            .menu li {
+                margin-bottom: 10px;
+                text-align: center;
+            }
+
+            .menu a {
+                color: #fff;
+                text-decoration: none;
+                font-size: 1.2em;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+            width: 200px; /* Adjust width as needed */
+        }
+
+        .search-bar button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #45a049;
+        }
+
+        /* Keyframes for background color animation */
+        @keyframes colorChange {
+            0% { background-color: #D1E8E2; }
+            25% { background-color: #E8D1E2; }
+            50% { background-color: #E2E8D1; }
+            75% { background-color: #E2D1E8; }
+            100% { background-color: #D1E8E2; }
+        }
+
+        /* Apply animation to the home section */
+        #home {
+            animation: colorChange 10s infinite;
+        }
+
+        .service {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .service img {
+        width: 150px; /* Specify the width for all service images */
+        height: 150px; /* Specify the height for all service images */
+    }
+
+    .service-description {
+        width: calc(50% - 10px); /* Adjust spacing between images */
+    }
+
+    .service-description h3 {
+        margin-top: 0;
+    }
+
+        .contact-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        .contact-form {
+            margin-top: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f5f5f5;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form h3 {
+            margin-top: 0;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+
+        .contact-form textarea {
+            height: 100px
+        }
+
+        .contact-form button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">CO Parts</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for car parts...">
+                <button type="submit">Search</button>
+            </div>
+            <label for="menu-toggle" class="menu-icon">&#9776;</label>
+            <ul class="menu" id="menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+<main>
+    <section id="home" class="section">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background-color: #D1E8E2;">
+                    <h1>Welcome to CO Parts</h1>
+                    <p>Your trusted destination for high-quality car body parts and accessories.</p>
+                    
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+    
+    <section id="about" class="section">
+        <h2>About Us</h2>
+        <p>Welcome to CO Parts, your one-stop destination for premium car body parts and accessories. We pride ourselves on offering a vast selection of genuine and aftermarket parts to meet all your automotive needs.</p>
+        <p>At CO Parts, we understand the importance of quality and reliability when it comes to maintaining and enhancing your vehicle. That's why we source our products from trusted manufacturers known for their exceptional craftsmanship and durability.</p>
+        <p>With our user-friendly website and knowledgeable staff, we strive to make your shopping experience hassle-free and enjoyable. Whether you're restoring a classic car or upgrading your daily driver, we're here to help you find the perfect parts to suit your vehicle and budget.</p>
+    </section>
+
+    <section id="services" class="section">
+        <h2>Our Services</h2>
+        <div class="services-container">
+            <div class="service">
+                <img src="./images/engine parts.jpg" alt="Engine Parts">
+                <h3>Engine Parts</h3>
+                <p>Find high-quality engine parts for your car to ensure optimal performance and reliability on the road.</p>
+            </div>
+            <div class="service">
+                <img src="./images/bodyp.jpg" alt="Body Panels">
+                <h3>Body Panels</h3>
+                <p>Explore a wide range of body panels including doors, fenders, and hoods to restore your vehicle's appearance.</p>
+            </div>
+            <div class="service">
+                <img src="./images/carlighting.jpg" alt="Lighting System">
+                <h3>Lighting System</h3>
+                <p>Upgrade your car's lighting system with our selection of headlights, taillights, and LED bulbs for improved visibility and safety.</p>
+            </div>
+            <div class="service">
+                <img src="./images/suspension.jpg" alt="Suspension Parts">
+                <h3>Suspension Parts</h3>
+                <p>Enhance your car's handling and ride comfort with quality suspension parts including shocks, struts, and control arms.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="contact-info">
+            <h2>Contact Us</h2>
+            <p>Have questions or need assistance? Get in touch with us!</p>
+            <p>Email: info@coparts.com</p>
+            <p>Phone: 123-456-7890</p>
+            <p>Address: 123 Main Street, City, Country</p>
+        </div>
+        <div class="contact-form">
+            <h3>Send Us a Message</h3>
+            <form action="#" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: {
+            el: '.swiper-pagination',
+            dynamicBullets: true,
+        },
+    });
+</script>
+<script>
+    const menuToggle = document.querySelector('.menu-icon');
+    const menu = document.getElementById('menu');
+
+    menuToggle.addEventListener('click', function() {
+        menu.classList.toggle('active');
+    });
+</script>
+<!-- Smooth Scrolling Script -->
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+              behavior: 'smooth'
+          });
+      });
+  });
+</script>
+</body>
